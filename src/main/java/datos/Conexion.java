@@ -1,6 +1,9 @@
 package datos;
 
+import static datos.Conexion.getDataSource;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -13,7 +16,7 @@ public class Conexion {
     private static final String JDBC_USER= "root";
     private static final String JDBC_PW= "admin";
     
-    public static DataSource getDataSource(){
+    public static DataSource getDataSource(){//Se utiliza el manejo de pool de conexiones.
         BasicDataSource ds =new BasicDataSource();
         ds.setUrl(JDBC_URL);
         ds.setUsername(JDBC_USER);
@@ -23,19 +26,35 @@ public class Conexion {
     }
 
     public static Connection getConnection() throws SQLException{  
-        return  getDataSource.getConnection();
+        return  getDataSource().getConnection();
     }
-    public static void close ( ResultSet rs) throws SQLException{
-        rs.close();
+    public static void close ( ResultSet rs){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public static void close (Statement rs) throws SQLException{
-        rs.close();
+    public static void close (Statement rs){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public static void close (PreparedStatement rs) throws SQLException{
-        rs.close();
+    public static void close (PreparedStatement rs){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public static void close(Connection rs) throws SQLException{
-        rs.close();
+    public static void close(Connection rs){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
