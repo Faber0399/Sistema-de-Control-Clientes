@@ -9,7 +9,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String email;
-    private int telefono;
+    private String telefono;
     private double saldo;
 
     public Cliente() {
@@ -19,7 +19,7 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public Cliente(String nombre, String apellido, String email, int telefono, double saldo) {
+    public Cliente(String nombre, String apellido, String email, String telefono, double saldo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -27,7 +27,7 @@ public class Cliente {
         this.saldo = saldo;
     }
 
-    public Cliente(int idCliente, String nombre, String apellido, String email, int telefono, double saldo) {
+    public Cliente(int idCliente, String nombre, String apellido, String email, String telefono, double saldo) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -68,11 +68,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
