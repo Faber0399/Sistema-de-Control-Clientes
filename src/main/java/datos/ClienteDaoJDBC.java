@@ -68,7 +68,7 @@ public class ClienteDaoJDBC {
         return String.format("%1$-" + n + "s", s);
     }
 
-    public List<Cliente> Listar2() {
+    public List<Cliente> listar2() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
