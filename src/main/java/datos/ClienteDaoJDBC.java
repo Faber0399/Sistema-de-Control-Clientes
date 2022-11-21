@@ -19,7 +19,7 @@ public class ClienteDaoJDBC {
     private static final String SQL_SELECT_BY_ID = "SELECT id_cliente, nombre, apellido, email, telefono, saldo FROM cliente WHERE id_cliente=?";
     private static final String SQL_INSERT = "INSERT INTO cliente(nombre, apellido, email, telefono, saldo) VALUES (?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE cliente SET nombre=?, apellido=?, email=?, telefono=?, saldo=? WHERE id_cliente=?";
-    private static final String SQL_DELETE = "DELETE cliente WHERE id_cliente=?";
+    private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente=?";
 
     public void Listar1() {
         Connection conn = null;
@@ -108,7 +108,7 @@ public class ClienteDaoJDBC {
             stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
             stmt.setInt(1, cliente.getIdCliente());
             rs = stmt.executeQuery();
-            rs.absolute(1);//Este metodo absolute nos permite posicionarnos en el primer registro que nos devuelva el query(Result Set)
+            rs.next();//Este metodo absolute nos permite posicionarnos en el primer registro que nos devuelva el query(Result Set)
             String nombre = rs.getString("nombre");
             String apellido = rs.getString("apellido");
             String email = rs.getString("email");
